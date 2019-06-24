@@ -11,6 +11,7 @@ public class Wierzcholek {
     public Wierzcholek(String nazwa) {
         this.nazwa = nazwa;
         this.wierzcholkiSasiednie = new ArrayList<Wierzcholek>();
+        this.stopienNasycenia = 0;
     }
 
     public Wierzcholek(String nazwa, Integer stopienNasycenia) {
@@ -45,7 +46,6 @@ public class Wierzcholek {
 
     public void dodajSasiada(Wierzcholek w) {
         if(wierzcholkiSasiednie.add(w)) w.getWierzcholkiSasiednie().add(this);
-
     }
 
     public void wypiszSasiadow() {

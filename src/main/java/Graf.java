@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Graf {
 
     private List<Wierzcholek> wierzcholki;
     private List<Krawedz> krawedzie;
+    private int numberOfVerticles;
 
     public Graf() {
         wierzcholki = new ArrayList<Wierzcholek>();
@@ -52,27 +50,16 @@ public class Graf {
         }
     }
 
-    public void pokolorujGrafZachlannie() {
-        wierzcholki.get(0).setKolor(0);
-        for(int i = 1; i < wierzcholki.size(); i++) {
-            wierzcholki.get(i).pokolorujZachalnnie(wierzcholki.size());
-        }
-    }
-
     public void pokolorujSlf(){
-        Collections.sort(wierzcholki, new SortByStopienNasycenia().reversed());
         Collections.sort(wierzcholki, new SortByStopien());
         List<Wierzcholek> tmp = new ArrayList<>();
         for(Wierzcholek w:wierzcholki) tmp.add(w);
         while(tmp.size() != 0) {
             tmp.get(0).pokolorujZachalnnie(wierzcholki.size());
-            tmp.get(0).toString();
-            //wierzcholki.get(wierzcholki.indexOf(tmp.get(0))).pokolorujZachalnnie(wierzcholki.size());
             tmp.remove(0);
+            for(Wierzcholek w:tmp) w.setStopienNasycenia();
             Collections.sort(tmp, new SortByStopienNasycenia().reversed());
-            Collections.sort(tmp, new SortByStopien());
         }
-
     }
 
     private class SortByStopienNasycenia implements java.util.Comparator<Wierzcholek> {
@@ -88,4 +75,5 @@ public class Graf {
             return o2.getStopie() - o1.getStopie();
         }
     }
+
 }
