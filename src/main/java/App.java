@@ -3,8 +3,8 @@ public class App {
     public static void main(String[] args) {
 
         Graf g = new Graf();
-
-        for(int i = 0;i<=19;i++) g.dodajWierzcholekDoGrafu(new Wierzcholek(String.valueOf(i)));
+        GeneratorGrafu generatorGrafu = new GeneratorGrafu(g);
+        generatorGrafu.generujWierzcholki(19);
         //0
         g.getWierzcholki().get(0).dodajSasiada(g.getWierzcholki().get(1));
         g.getWierzcholki().get(0).dodajSasiada(g.getWierzcholki().get(5));
@@ -60,14 +60,23 @@ public class App {
         //16
         //17
         //18
-
         long start = System.nanoTime();
         g.pokolorujSlf();
         long stop = System.nanoTime();
-        g.wypiszGraf();
-        System.out.println((stop-start)/1000000 + " ms");
+        g.wypiszGraf((stop-start)/1000000);
+        System.out.println("G1: " + (stop-start)/1000000 + " ms");
         g.getWierzcholki().get(11).toString();
         //for(Wierzcholek w:g.getWierzcholki()) w.wypiszSasiadow();
+
+        Graf g2 = new Graf();
+        GeneratorGrafu generatorGrafuG2 = new GeneratorGrafu(g2);
+        generatorGrafuG2.generujWierzcholki(23);
+        generatorGrafuG2.generujKrawedzie(12);
+        start = System.nanoTime();
+        g2.pokolorujSlf();
+        stop = System.nanoTime();
+        g2.wypiszGraf((stop-start)/1000000);
+        System.out.println("G2: " + (stop-start)/1000000 + " ms");
     }
 
 }

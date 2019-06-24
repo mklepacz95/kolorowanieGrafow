@@ -1,0 +1,9 @@
+ileWierzcholkow;ileCzasu;algorytm
+20;17ms;SLF
+101;15ms;SLF
+20;7ms;SLF
+101;14ms;SLF
+20;15ms;SLF
+51;7ms;SLF
+20;7ms;SLF
+24;1ms;SLF

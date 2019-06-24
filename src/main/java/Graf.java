@@ -43,11 +43,12 @@ public class Graf {
                 '}';
     }
 
-    public void wypiszGraf() {
+    public void wypiszGraf(long ileCzasu) {
         System.out.println("Wierzchołki: ");
         for (Wierzcholek w: wierzcholki) {
             System.out.println(w.toString());
         }
+        new ZapiszWyniki().zapiszWyniki(getWierzcholki().size(),ileCzasu);
     }
 
     public void pokolorujSlf(){
