@@ -3,7 +3,7 @@ import java.io.*;
 public class ZapiszWyniki {
 
     public void zapiszWyniki(int ileWierzcholkow, long ileMs) {
-        File raport = new File("raport/raport.txt");
+        File raport = new File("raport/raport2.csv");
         try {
             BufferedWriter pw = new BufferedWriter(new FileWriter(raport, true));
             pw.append("\r\n"+ileWierzcholkow+";"+ileMs+"ms"+";SLF");

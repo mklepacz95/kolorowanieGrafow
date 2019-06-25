@@ -1,7 +1,26 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 public class App {
 
     public static void main(String[] args) {
 
+        Random random = new Random();
+        List<Graf> grafy = new ArrayList<>();
+        for(int i = 0; i<50;i++) grafy.add(new Graf());
+        for(Graf g: grafy) {
+            GeneratorGrafu generatorGrafu = new GeneratorGrafu(g);
+            int ileWierzcholkow = random.nextInt(1000);
+            generatorGrafu.generujWierzcholki(ileWierzcholkow);
+            generatorGrafu.generujKrawedzie(random.nextInt(1000)+ ileWierzcholkow);
+            long start = System.nanoTime();
+            g.pokolorujSlf();
+            long stop = System.nanoTime();
+            g.wypiszGraf((stop-start)/1000000);
+            System.out.println(ileWierzcholkow);
+        }
+        /*
         Graf g = new Graf();
         GeneratorGrafu generatorGrafu = new GeneratorGrafu(g);
         generatorGrafu.generujWierzcholki(19);
@@ -70,13 +89,15 @@ public class App {
 
         Graf g2 = new Graf();
         GeneratorGrafu generatorGrafuG2 = new GeneratorGrafu(g2);
-        generatorGrafuG2.generujWierzcholki(23);
-        generatorGrafuG2.generujKrawedzie(12);
+        generatorGrafuG2.generujWierzcholki(18);
+        generatorGrafuG2.generujKrawedzie(29);
         start = System.nanoTime();
         g2.pokolorujSlf();
         stop = System.nanoTime();
         g2.wypiszGraf((stop-start)/1000000);
         System.out.println("G2: " + (stop-start)/1000000 + " ms");
+
+         */
     }
 
 }
